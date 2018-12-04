@@ -8,15 +8,18 @@ import shutil
 
 class uwebsocketConan(ConanFile):
     name = "usockets"
-    version = "0.0.5"
+    version = "0.0.6"
     license = "Apache 2.0"
-    author = "kaiyin keezhong@qq.com"
+    author = "uNetworking"
     url = "https://github.com/kindlychung/uSockets"
     description = "µSockets - miniscule networking & eventing"
     topics = ("c", "network", "sockets")
     settings = "os", "compiler", "build_type", "arch"
     options = {"shared": [True, False]}
-    default_options = "shared=False"
+    default_options = {
+        "shared": True
+    }
+    requires = ("OpenSSL/1.1.1a@jzien/dev",)
     generators = "cmake"
     exports_sources = "src/*", "CMakeLists.txt"
 
